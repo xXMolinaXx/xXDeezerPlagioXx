@@ -6,6 +6,7 @@
         $json=json_decode($linea,true);
         if( $json['usuario']==$parametro){
             echo json_encode($json);
+            fclose($archivos);
             exit();
         }
     }

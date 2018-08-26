@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	console.log("El DOM ha sido cargado, debe cargar todos los tweets e imprimirlos tal y como lo muestrael html estatico");
-	$("#slc-usuario").html("");
-	$("#tweets").html("hola");
 /*********************peticion ajax usuarios******************************************* */
 	$.ajax({
         url:"ajax/ajax-traer-usuarios.php",
@@ -101,21 +99,22 @@ $("#slc-usuario").change(function(){
 /*************************publicar tweets************************************************** */
 $("#publicar-tweets").click(function(){
 	
-	var usuario="usuario="+$("#slc-usuario").val()+"&nombre="+$("#nombre-usuario").html()+
-	"&urlImagen="+$("#img-usuario").attr("src");
-	var parametros=;
-	console.log(usuario);
+	
+	var tweets="usuario="+$("#slc-usuario").val()+"&tweet="+$("#texto-tweet").val()+
+	"&hashtags="+$("#texto-Hashtags").val();
+	console.log("parametros a mandar"+tweets);
 
-	/*$.ajax({
-		url:"ajax/ajax-traer-info-usuarios.php",
-		data:parametros,
+	$.ajax({
+		url:"ajax/ajax-guardar-tweet.php",
+		data:tweets,
 		method:"POST",
-		dataType:"json",
+		dataType:"html",
         success: function(respuesta){
-			 console.log(respuesta);
+			 console.log("la respuesta del servidor es:  "+respuesta);
+			 location.reload();
         },
         error:function(error){
             console.log(error);
         }
-     });*/
+     });
 });

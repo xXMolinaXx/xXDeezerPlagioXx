@@ -6,5 +6,6 @@
         $json=json_decode($linea,true);
         $jsonAreglos[]=$json;
     }
+    fclose($archivos);
     echo json_encode($jsonAreglos);
 ?>
